@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="/scholars_shop/static/css/style.css"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!-- for favicon -->
+  <!-- <link rel="shortcut icon" type="image/png" href="sampleImage.jpg"> -->
+
+  <script src="https://kit.fontawesome.com/ddebf545f0.js" crossorigin="anonymous"></script>
+
+  <title>Scholars Shop Food</title>
+</head>
+
+<body>
+  <div class="goal">
+    <p>Connecting students with sellers for a seamless trading experience...</p>
+  </div>
+  <header class="banner">
+    <div class="inner-banner">
+      <!-- <div class="logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" width="400px" alt="Scholars Shop Logo">
+        </div> -->
+      <div class="hamburger" onclick="toggleBar()"><i class="fa-solid fa-bars"></i></div>
+      <div class="topBar">
+        <h1 class="header">{{ category }}</h1>
+        <div class="links">
+          <a href="/login"><i class="fa-regular fa-user"></i>
+            <p>Account</p>
+          </a>
+          <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>
+            <p>Cart</p>
+          </a>
+          <a href="inbox.html"><i class="fa-regular fa-envelope"></i>
+            <p>Inbox</p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="sideBar">
+      <a href="/" class="nav-item">
+        <i class="fa-solid fa-house"></i> Home
+      </a>
+      <a href="/product/food" class="nav-item">
+        <i class="fa-solid fa-utensils"></i> Food
+      </a>
+      <a href="/product/fashion" class="nav-item">
+        <i class="fa-solid fa-shirt"></i> Fashion
+      </a>
+      <a href="/product/books" class="nav-item">
+        <i class="fa-solid fa-book"></i> Books
+      </a>
+      <a href="/product/gadgets" class="nav-item">
+        <i class="fa-solid fa-mobile-screen-button"></i> Gadgets
+      </a>
+      <a href="/product/electronics" class="nav-item">
+        <i class="fa-solid fa-plug"></i> Electronics
+      </a>
+  </div>
+  </header>
+  <!-- MObile sidebar -->
+  <nav class="mobile-nav">
+      <ul>
+        <li><a href="/" class="nav-item">
+          <i class="fa-solid fa-house"></i> <p>Home</p>
+        </a></li>
+        <li><a href="/product/food" class="nav-item">
+          <i class="fa-solid fa-utensils"></i><p>Food</p>
+        </a></li>
+        <li><a href="/product/fashion" class="nav-item">
+          <i class="fa-solid fa-shirt"></i> <p>Fashion</p>
+        </a></li>
+        <li><a href="/product/books" class="nav-item">
+          <i class="fa-solid fa-book"></i> <p>Books</p>
+        </a></li>
+        <li><a href="/product/gadgets" class="nav-item">
+          <i class="fa-solid fa-mobile-screen-button"></i> <p>Gadgets</p>
+        </a></li>
+        <li><a href="/product/electronics" class="nav-item">
+          <i class="fa-solid fa-plug"></i> <p>Electronics</p>
+        </a></li>
+      </ul>
+  </nav>
+  <div class="mainBody">
+    <div class="mobileOptions">
+      <a href="/login"><i class="fa-regular fa-user"></i>
+        <p>Account</p>
+      </a>
+      <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>
+        <p>Cart</p>
+      </a>
+      <a href="inbox.html"><i class="fa-regular fa-envelope"></i>
+        <p>Inbox</p>
+      </a>
+    </div>
+    <div class="main_products">
+      <img src="{{ url_for('static', filename='images/' + banner_img) }}" width="50%" alt="{{ category }}">
+    </div>
+    <p class="products-title tagline">{{ category }} products</p>
+    <div class="product-cards">
+      {% for product in products %}
+      <div class="card">
+        <div class="card-image"><img src="{{product[3]}}" alt="{{product[2]}}"></div>
+        <p class="p-name">{{product[1]}}</p>
+        <p class="p-description">{{product[2]}}</p>
+        <button  class="cart-btn" type="button">Add to cart</button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <script type="script" src="{{ url_for('static', filename='script.js')}}"></script>
+  <script>
+            var hamburger = document.getElementsByClassName("hamburger")[0]
+            var mobileNav = document.getElementsByClassName("mobile-nav")[0]
+
+            function toggleBar() {
+                // hamburger.addEventListener("click", () =>{
+                //   console.log("click")
+                //   mobileNav.classList.toggle("active")
+                // })
+                mobileNav.classList.toggle("active")
+            }
+            
+
+            const cartBtn = document.getElementsByClassName("cart-btn")
+            for (const btn of cartBtn){
+// btn.addEventListener('click',)       
+            }
+  </script>
+</body>
+
+</html>
